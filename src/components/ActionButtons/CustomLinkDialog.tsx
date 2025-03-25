@@ -36,10 +36,7 @@ export default function Component({ localLink }: { localLink: string }) {
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
   const [isCopied, setIsCopied] = useState(false);
-  const baseUrl =
-    process.env.NODE_ENV === "development"
-      ? "http://localhost:3000"
-      : `https://${process.env.VERCEL_URL}`;
+  const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL;
 
   const fullUrl = `${baseUrl}/${customPath}`;
 
