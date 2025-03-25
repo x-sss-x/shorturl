@@ -27,17 +27,21 @@ export async function generateMetadata({ params }: Props) {
     openGraph: {
       type: "website",
       locale: "en_US",
-      url: "https://ShortURL.vercel.app",
+      url: process.env.NEXT_PUBLIC_VERCEL_URL,
       title: `${data.n}'s - ShortURL`,
       description: `Find all of ${data.n}'s links in one place.`,
-      images: `https://ShortURL.vercel.app/api/og?data=${encodeURI(data.n)}`,
+      images: `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/og?data=${encodeURI(
+        data.n
+      )}`,
       siteName: `${data.n}'s - ShortURL`,
     },
     twitter: {
       card: "summary_large_image",
       title: `${data.n} - ShortURL`,
       description: `Find all of ${data.n}'s links in one place.`,
-      images: `https://ShortURL.vercel.app/api/og?data=${encodeURI(data.n)}`,
+      images: `${process.env.NEXT_PUBLIC_VERCEL_URL}/api/og?data=${encodeURI(
+        data.n
+      )}`,
       creator: "@Taquiimam14",
     },
   };

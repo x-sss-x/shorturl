@@ -38,7 +38,7 @@ export default function Component({ localLink }: { localLink: string }) {
   const [isCopied, setIsCopied] = useState(false);
   const baseUrl = process.env.NEXT_PUBLIC_VERCEL_URL;
 
-  const fullUrl = `${baseUrl}/${customPath}`;
+  const fullUrl = `${baseUrl}/1/${customPath}`;
 
   const copyToClipboard = useCallback(() => {
     navigator.clipboard
