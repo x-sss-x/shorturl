@@ -1,8 +1,8 @@
 import { decodeData } from "@/lib/utils";
-import NotFound from "../not-found";
 import { BACKGROUND_OPTIONS } from "@/components/Background/BgSnippets";
 import DataLoading from "./loading";
 import DisplayScreen from "@/components/screen/DisplayScreen";
+import { notFound } from "next/navigation";
 
 export async function generateMetadata({ searchParams }: any) {
   const data = decodeData(searchParams.data);
@@ -34,7 +34,7 @@ export async function generateMetadata({ searchParams }: any) {
 }
 
 const linkLandingPage = ({ searchParams }: any) => {
-  if (!searchParams.data) NotFound();
+  if (!searchParams.data) notFound();
 
   const data = decodeData(searchParams.data);
 

@@ -2,8 +2,8 @@ import { decodeData } from "@/lib/utils";
 import { BACKGROUND_OPTIONS } from "@/components/Background/BgSnippets";
 import DisplayScreen from "@/components/screen/DisplayScreen";
 import { supabaseServer } from "@/lib/supabase/supabaseServer";
-import NotFound from "@/app/not-found";
 import DataLoading from "../loading";
+import { notFound } from "next/navigation";
 type Props = {
   params: {
     slug: string;
@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: Props) {
     .from("links")
     .select("*")
     .eq("path", params.slug);
-  if (path.data?.length === 0) return NotFound();
+  if (path.data?.length === 0) return notFound();
 
   const data = decodeData(path?.data?.[0].link);
   if (!data) {
@@ -48,7 +48,7 @@ const linkLandingPage: React.FC<Props> = async ({ params }) => {
     .from("links")
     .select("*")
     .eq("path", params.slug);
-  if (path.data?.length === 0) return NotFound();
+  if (path.data?.length === 0) return notFound();
 
   const data = decodeData(path?.data?.[0].link);
   const selectedBgOption = data

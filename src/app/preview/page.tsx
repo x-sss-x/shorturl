@@ -1,13 +1,13 @@
 import React from "react";
-import NotFound from "../not-found";
 import { decodeData } from "@/lib/utils";
 import ComputerMockup from "@/components/mockup/ComputerMockup";
 import { BACKGROUND_OPTIONS } from "@/components/Background/BgSnippets";
 import PreviewPage from "@/components/PreviewPage";
 import PreviewFooter from "@/components/ActionButtons/PreviewFooter";
+import { notFound } from "next/navigation";
 
 function page({ searchParams }: any) {
-  if (!searchParams.data) NotFound();
+  if (!searchParams.data) notFound();
 
   const data = decodeData(searchParams.data);
   const selectedBgOption = data
