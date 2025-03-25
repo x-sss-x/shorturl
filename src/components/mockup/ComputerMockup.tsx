@@ -14,7 +14,7 @@ function ComputerMockup({ children }: { children: React.ReactNode }) {
             <div className="flex justify-center items-center w-full bg-gray-700 text-[.5rem] text-gray-400 rounded-sm sm:text-[1rem] dark:bg-neutral-600 dark:text-neutral-400">
               {process.env.NODE_ENV === "development"
                 ? "http://localhost:3000"
-                : process.env.VERCEL}
+                : process.env.VERCEL_URL}
             </div>
           </div>
 
