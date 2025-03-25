@@ -1,10 +1,6 @@
-import React from 'react'
+import React from "react";
 
-function ComputerMockup({
-    children,
-  }: {
-    children: React.ReactNode;
-  })  {
+function ComputerMockup({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen w-full flex  items-center justify-center relative">
       <div className="flex flex-col w-auto h-fit px-1 lg:px-0  ">
@@ -16,17 +12,19 @@ function ComputerMockup({
               <span className="h-4 w-4 bg-yellow-600 rounded-full dark:bg-neutral-600"></span>
             </div>
             <div className="flex justify-center items-center w-full bg-gray-700 text-[.5rem] text-gray-400 rounded-sm sm:text-[1rem] dark:bg-neutral-600 dark:text-neutral-400">
-              https.itzmylink.vercel.app/...
+              {process.env.NODE_ENV === "development"
+                ? "http://localhost:3000"
+                : process.env.VERCEL}
             </div>
           </div>
 
           <div className="bg-zinc-100 rounded-b-lg h-[38rem] border relative overflow-hidden">
-           {children}
+            {children}
           </div>
         </figure>
       </div>
     </div>
-  )
+  );
 }
 
-export default ComputerMockup
+export default ComputerMockup;

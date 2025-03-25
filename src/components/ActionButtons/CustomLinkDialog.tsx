@@ -30,13 +30,16 @@ const checkPathExists = async (path: string): Promise<boolean> => {
   return path.toLowerCase().includes("taken");
 };
 
-export default function Component({localLink}:{localLink:string}) {
+export default function Component({ localLink }: { localLink: string }) {
   const [customPath, setCustomPath] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
   const [isCopied, setIsCopied] = useState(false);
-  const baseUrl = "itzmylink.vercel.app/1";
+  const baseUrl =
+    process.env.NODE_ENV === "development"
+      ? "http://localhost:3000"
+      : process.env.VERCEL;
 
   const fullUrl = `${baseUrl}/${customPath}`;
 
@@ -76,11 +79,11 @@ export default function Component({localLink}:{localLink:string}) {
       if (exists) {
         setError("This custom path is already taken. Please try another.");
       } else {
-        const res = await createCustomPath(customPath,localLink);
+        const res = await createCustomPath(customPath, localLink);
         if (res.status !== "notAuthenticated") {
-            res.status === 'created'?
-          setSuccess(res.message):
-          setError(res.message)
+          res.status === "created"
+            ? setSuccess(res.message)
+            : setError(res.message);
         }
       }
     } catch (err) {
@@ -89,13 +92,16 @@ export default function Component({localLink}:{localLink:string}) {
     } finally {
       setIsLoading(false);
     }
-  }, [customPath]);
+  }, [customPath, localLink]);
 
   return (
     <>
       <Dialog>
         <DialogTrigger asChild>
-        <Button variant="ghost" className="rounded-full hover:bg-gray-100 transition-colors duration-200">
+          <Button
+            variant="ghost"
+            className="rounded-full hover:bg-gray-100 transition-colors duration-200"
+          >
             <PenSquare className="w-4 h-4 mr-2" />
             Create Custom URL
           </Button>
@@ -143,7 +149,9 @@ export default function Component({localLink}:{localLink:string}) {
       <AlertDialog open={!!error || !!success}>
         <AlertDialogContent>
           <AlertDialogHeader>
-            <AlertDialogTitle>{error ? "Already Exists 😅" : "Congratulation🎉"}</AlertDialogTitle>
+            <AlertDialogTitle>
+              {error ? "Already Exists 😅" : "Congratulation🎉"}
+            </AlertDialogTitle>
             <AlertDialogDescription>
               {error || success}
               {success && (

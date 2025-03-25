@@ -1,5 +1,5 @@
 import React from "react";
-import NotFound from "../Not-found";
+import NotFound from "../not-found";
 import { decodeData } from "@/lib/utils";
 import ComputerMockup from "@/components/mockup/ComputerMockup";
 import { BACKGROUND_OPTIONS } from "@/components/Background/BgSnippets";
@@ -19,15 +19,13 @@ function page({ searchParams }: any) {
     : null;
   return (
     <>
-    <ComputerMockup>
+      <ComputerMockup>
         <div className="absolute left-0 top-0  h-full w-full">
           {selectedBgComponent}
         </div>
         <PreviewPage data={data} />
-
-    </ComputerMockup>
-    <PreviewFooter MyLink={data} inputLink={searchParams.data}/>
-    
+      </ComputerMockup>
+      <PreviewFooter MyLink={data} inputLink={searchParams.data} />
     </>
   );
 }

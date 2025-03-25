@@ -2,7 +2,7 @@ import { decodeData } from "@/lib/utils";
 import { BACKGROUND_OPTIONS } from "@/components/Background/BgSnippets";
 import DisplayScreen from "@/components/screen/DisplayScreen";
 import { supabaseServer } from "@/lib/supabase/supabaseServer";
-import NotFound from "@/app/Not-found";
+import NotFound from "@/app/not-found";
 import DataLoading from "../loading";
 type Props = {
   params: {
@@ -10,7 +10,7 @@ type Props = {
   };
 };
 export async function generateMetadata({ params }: Props) {
-    const path = await supabaseServer()
+  const path = await supabaseServer()
     .from("links")
     .select("*")
     .eq("path", params.slug);
@@ -27,17 +27,17 @@ export async function generateMetadata({ params }: Props) {
     openGraph: {
       type: "website",
       locale: "en_US",
-      url: "https://itZmyLink.vercel.app",
-      title: `${data.n}'s - itZmyLink`,
+      url: "https://ShortURL.vercel.app",
+      title: `${data.n}'s - ShortURL`,
       description: `Find all of ${data.n}'s links in one place.`,
-      images: `https://itZmyLink.vercel.app/api/og?data=${encodeURI(data.n)}`,
-      siteName: `${data.n}'s - itZmyLink`,
+      images: `https://ShortURL.vercel.app/api/og?data=${encodeURI(data.n)}`,
+      siteName: `${data.n}'s - ShortURL`,
     },
     twitter: {
       card: "summary_large_image",
-      title: `${data.n} - itZmyLink`,
+      title: `${data.n} - ShortURL`,
       description: `Find all of ${data.n}'s links in one place.`,
-      images: `https://itZmyLink.vercel.app/api/og?data=${encodeURI(data.n)}`,
+      images: `https://ShortURL.vercel.app/api/og?data=${encodeURI(data.n)}`,
       creator: "@Taquiimam14",
     },
   };

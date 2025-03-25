@@ -17,7 +17,8 @@ function PreviewFooter({
     const url = `${window.location.origin}/1?data=${inputLink}`;
     navigator.clipboard.writeText(url);
     return url;
-  }, [MyLink]);
+  }, [inputLink]);
+
   return (
     <div className=" absolute z-50 bottom-0 left-0 right-0 m-auto w-fit flex flex-row gap-2 items-center justify-center mb-4 p-1 rounded-full bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 animate-bounce">
       <div className="bg-white rounded-full shadow-lg p-1">
@@ -27,7 +28,7 @@ function PreviewFooter({
             className="rounded-full hover:bg-gray-100 transition-colors duration-200"
             onClick={() => {
               navigator.share({
-                title: `${MyLink.n} - itZmyLink`,
+                title: `${MyLink.n} - ShortURL`,
                 text: `Find all of ${MyLink.n}'s links in one place.`,
                 url: `${inputLink}`,
               });

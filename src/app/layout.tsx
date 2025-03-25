@@ -8,10 +8,10 @@ const inter = Inter({ subsets: ["latin"] });
 
 // Original source: https://github.com/sadmann7/skateshop/blob/main/src/app/layout.tsx
 export const metadata: Metadata = {
-  metadataBase: new URL("https://itzmylink.vercel.app"),
+  metadataBase: new URL("https://ShortURL.vercel.app"),
   title: {
     default: siteConfig.name,
-    template: `%s - itZmyLink`,
+    template: `%s - ShortURL`,
   },
   description: siteConfig.description,
 
@@ -32,8 +32,8 @@ export const metadata: Metadata = {
     "link in bio",
     "short my url",
     "my links",
-    "itzmylink",
-    "itZmyLink",
+    "ShortURL",
+    "ShortURL",
     "mtLink",
   ],
   authors: [
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     },
   ],
   creator: "Taqui imam",
- 
+
   openGraph: {
     type: "website",
     locale: "en_US",

@@ -1,5 +1,5 @@
 import { decodeData } from "@/lib/utils";
-import NotFound from "../Not-found";
+import NotFound from "../not-found";
 import { BACKGROUND_OPTIONS } from "@/components/Background/BgSnippets";
 import DataLoading from "./loading";
 import DisplayScreen from "@/components/screen/DisplayScreen";
@@ -17,17 +17,17 @@ export async function generateMetadata({ searchParams }: any) {
     openGraph: {
       type: "website",
       locale: "en_US",
-      url: "https://itZmyLink.vercel.app",
-      title: `${data.n}'s - itZmyLink`,
+      url: "https://ShortURL.vercel.app",
+      title: `${data.n}'s - ShortURL`,
       description: `Find all of ${data.n}'s links in one place.`,
-      images: `https://itZmyLink.vercel.app/api/og?data=${encodeURI(data.n)}`,
-      siteName: `${data.n}'s - itZmyLink`,
+      images: `https://ShortURL.vercel.app/api/og?data=${encodeURI(data.n)}`,
+      siteName: `${data.n}'s - ShortURL`,
     },
     twitter: {
       card: "summary_large_image",
-      title: `${data.n} - itZmyLink`,
+      title: `${data.n} - ShortURL`,
       description: `Find all of ${data.n}'s links in one place.`,
-      images: `https://itZmyLink.vercel.app/api/og?data=${encodeURI(data.n)}`,
+      images: `https://ShortURL.vercel.app/api/og?data=${encodeURI(data.n)}`,
       creator: "@Taquiimam14",
     },
   };
@@ -37,7 +37,7 @@ const linkLandingPage = ({ searchParams }: any) => {
   if (!searchParams.data) NotFound();
 
   const data = decodeData(searchParams.data);
-  
+
   const selectedBgOption = data
     ? BACKGROUND_OPTIONS.find((option) => option.code === data.bg)
     : null;
