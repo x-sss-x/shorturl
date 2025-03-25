@@ -27,12 +27,13 @@ const config = {
       }
       return session;
     },
-    async signIn({ account, profile }: any) {
+    async signIn({ account, user, profile }: any) {
       if (account?.provider === "google") {
         const isExists = await isUserExists(profile?.email);
-
-        if (isExists.status !== "success") {
-          await createUser(profile);
+        console.log("isisckckck");
+        if (isExists.status === "success") {
+          console.log("isUserExists");
+          await createUser({ name: profile.name, email: user.email });
           return true;
         }
         return true;
