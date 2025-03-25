@@ -31,7 +31,7 @@ const config = {
       if (account?.provider === "google") {
         const isExists = await isUserExists(profile?.email);
 
-        if (isExists.status === "success") {
+        if (isExists.status !== "success") {
           await createUser(profile);
           return true;
         }
